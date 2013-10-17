@@ -18,7 +18,7 @@ class StepsControllerTest < ActionController::TestCase
 
   test "should create step" do
     assert_difference('Step.count') do
-      post :create, step: { name: @step.name }
+      post :create, step: { list_id: @step.list_id, name: @step.name }
     end
 
     assert_redirected_to step_path(assigns(:step))
@@ -35,7 +35,7 @@ class StepsControllerTest < ActionController::TestCase
   end
 
   test "should update step" do
-    put :update, id: @step, step: { name: @step.name }
+    put :update, id: @step, step: { list_id: @step.list_id, name: @step.name }
     assert_redirected_to step_path(assigns(:step))
   end
 
