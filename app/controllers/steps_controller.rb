@@ -45,7 +45,7 @@ class StepsController < ApplicationController
 
     respond_to do |format|
       if @step.save
-        format.html { redirect_to @step, notice: 'Step was successfully created.' }
+        format.html { redirect_to [@list, @step], notice: 'Step was successfully created.' }
         format.json { render json: @step, status: :created, location: @step }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class StepsController < ApplicationController
 
     respond_to do |format|
       if @step.update_attributes(params[:step])
-        format.html { redirect_to @step, notice: 'Step was successfully updated.' }
+        format.html { redirect_to [@list, @step], notice: 'Step was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class StepsController < ApplicationController
     @step.destroy
 
     respond_to do |format|
-      format.html { redirect_to steps_url }
+      format.html { redirect_to list_steps_path(@list) }
       format.json { head :no_content }
     end
   end
